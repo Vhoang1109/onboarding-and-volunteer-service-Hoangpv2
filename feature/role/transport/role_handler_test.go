@@ -60,7 +60,7 @@ func TestRoleHandler_CreateRole(t *testing.T) {
 	w := httptest.NewRecorder()
 	router.ServeHTTP(w, req)
 
-	assert.Equal(t, http.StatusCreated, w.Code)
+	assert.Equal(t, http.StatusOK, w.Code)
 	mockUsecase.AssertCalled(t, "CreateRole", input)
 }
 

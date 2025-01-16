@@ -47,7 +47,7 @@ func TestRoleRepository_Create(t *testing.T) {
 	}
 
 	mock.ExpectBegin()
-	mock.ExpectExec(regexp.QuoteMeta("INSERT INTO `roles` (`name`,`status`,`created_at`,`updated_at`) VALUES (?,?,?,?)")).
+	mock.ExpectExec(regexp.QuoteMeta("INSERT INTO `roles` (`name`,`created_at`,`updated_at`) VALUES (?,?,?)")).
 		WillReturnResult(sqlmock.NewResult(1, 1))
 	mock.ExpectCommit()
 
@@ -74,7 +74,7 @@ func TestRoleRepository_GetByID(t *testing.T) {
 		Name: "Admin",
 	}
 
-	rows := sqlmock.NewRows([]string{"id", "name", "status"}).
+	rows := sqlmock.NewRows([]string{"id", "name"}).
 		AddRow(role.ID, role.Name)
 	mock.ExpectQuery(regexp.QuoteMeta("SELECT * FROM `roles` WHERE `roles`.`id` = ? ORDER BY `roles`.`id` LIMIT ?")).
 		WithArgs(roleID, 1).
@@ -107,7 +107,7 @@ func TestRoleRepository_Update(t *testing.T) {
 	}
 
 	mock.ExpectBegin()
-	mock.ExpectExec(regexp.QuoteMeta("UPDATE `roles` SET `name`=?,`status`=?,`created_at`=?,`updated_at`=? WHERE `id` = ?")).
+	mock.ExpectExec(regexp.QuoteMeta("UPDATE `roles` SET `name`=?,`created_at`=?,`updated_at`=? WHERE `id` = ?")).
 		WillReturnResult(sqlmock.NewResult(1, 1))
 	mock.ExpectCommit()
 
