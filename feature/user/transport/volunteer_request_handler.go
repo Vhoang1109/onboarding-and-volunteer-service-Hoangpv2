@@ -24,7 +24,7 @@ func NewVolunteerRequestHandler(volRequestUsecase usecase.VolunteerRequestUsecas
 // @Accept json
 // @Param request body dto.VoluteerRequestCreatingDTO true "Request body"
 // @Success 201 {object} string
-// @Router /api/v1/volunteer/request [post]
+// @Router /api/v1/volunteer-request [post]
 func (h *VolunteerRequestHandler) CreateVolunteerRequest(c *gin.Context) {
 	var request dto.VoluteerRequestCreatingDTO
 	if err := c.ShouldBindJSON(&request); err != nil {

@@ -47,7 +47,7 @@ func (h *ApplicantHandler) CreateApplicant(c *gin.Context) {
 // @Produce json
 // @Tags applicant
 // @Param id path int true "Applicant ID"
-// @Param request body dto.AppplicantUpdateDTO true "Update Applicant Request"
+// @Param request body dto.ApplicantUpdateDTO true "Update Applicant Request"
 // @Success 200 {string} message "Applicant updated successfully"
 // @Router /api/v1/applicant/{id} [put]
 func (h *ApplicantHandler) UpdateApplicant(c *gin.Context) {
